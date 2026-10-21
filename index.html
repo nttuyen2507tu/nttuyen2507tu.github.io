@@ -4,84 +4,411 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Marketing Portfolio</title>
+  <title>My Marketing Portfolio</title>
   <style>
+    :root {
+      --cream: #f7f5ef;
+      --navy: #213047;
+      --blue: #3459db;
+      --coral: #f18b69;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #faf7f2;
-      color: #283747;
+      background: var(--cream);
+      color: var(--navy);
+      font-family: "Segoe UI", Arial, sans-serif;
       line-height: 1.7;
     }
-    header {
-      background: #26364a;
-      color: white;
-      text-align: center;
-      padding: 70px 20px;
+
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
     }
-    header h1 { font-size: 38px; margin: 0; }
-    header p { color: #f1d5bd; }
-    main { max-width: 850px; margin: auto; padding: 25px; }
-    section {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      margin: 20px 0;
-      box-shadow: 0 2px 12px #0000000a;
+
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -1px;
     }
-    h2 { color: #a77550; }
-    .button {
+
+    .logo span { color: var(--blue); }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .menu a:hover { color: var(--blue); }
+
+    .hero {
+      max-width: 1100px;
+      margin: 50px auto 70px;
+      padding: 20px 30px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 45px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 75px);
+      line-height: 1.12;
+      letter-spacing: -3px;
+      margin: 16px 0 20px;
+    }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    .hero p {
+      max-width: 520px;
+      color: #596575;
+      font-size: 17px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      padding: 12px 23px;
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 14px;
       display: inline-block;
-      background: #a77550;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 7px;
-      text-decoration: none;
     }
-    footer { text-align: center; padding: 25px; }
+
+    .primary {
+      background: var(--blue);
+      color: white;
+    }
+
+    .secondary {
+      border: 1px solid #cbd0d9;
+    }
+
+    .art {
+      min-height: 330px;
+      background: var(--blue);
+      border-radius: 28px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .circle {
+      width: 225px;
+      height: 225px;
+      background: var(--coral);
+      border-radius: 50%;
+      position: absolute;
+      top: 35px;
+      right: -35px;
+    }
+
+    .art-text {
+      position: relative;
+      transform: rotate(-8deg);
+      background: #fff7e8;
+      color: var(--navy);
+      border-radius: 16px;
+      padding: 28px 25px;
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1.15;
+      box-shadow: 12px 14px 0 rgba(0,0,0,.16);
+    }
+
+    .star {
+      position: absolute;
+      bottom: 12px;
+      left: 25px;
+      color: #ffe89c;
+      font-size: 90px;
+    }
+
+    main {
+      max-width: 1100px;
+      padding: 0 30px;
+      margin: auto;
+    }
+
+    section { margin-bottom: 85px; }
+
+    .section-title {
+      font-size: 34px;
+      letter-spacing: -1px;
+      margin: 8px 0 22px;
+    }
+
+    .about {
+      background: var(--white);
+      border-radius: 22px;
+      padding: 35px;
+      border: 1px solid #eeeae4;
+    }
+
+    .about p {
+      color: #596575;
+      max-width: 800px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 26px;
+      border: 1px solid #eeeae4;
+      border-radius: 18px;
+      transition: transform .2s;
+    }
+
+    .card:hover { transform: translateY(-5px); }
+
+    .number {
+      color: var(--coral);
+      font-size: 30px;
+      font-weight: 900;
+    }
+
+    .card h3 { margin: 12px 0 8px; }
+
+    .card p {
+      font-size: 14px;
+      color: #596575;
+    }
+
+    .tag {
+      font-size: 12px;
+      color: var(--blue);
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .contact {
+      text-align: center;
+      background: var(--navy);
+      color: white;
+      padding: 55px 25px;
+      border-radius: 24px;
+    }
+
+    .contact h2 {
+      font-size: 38px;
+      line-height: 1.2;
+    }
+
+    .contact p { color: #cbd3e0; }
+
+    .contact .btn {
+      background: var(--coral);
+      color: var(--navy);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #707988;
+      font-size: 13px;
+    }
+
+    @media (max-width: 750px) {
+      nav { align-items: flex-start; flex-direction: column; }
+      .hero { grid-template-columns: 1fr; margin-top: 20px; }
+      .art { min-height: 260px; }
+      .grid { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -2px; }
+      .contact h2 { font-size: 28px; }
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>My Marketing Portfolio</h1>
-    <p>Marketing Student | Content Creator</p>
-    <p>Creative Thinking • Digital Marketing • Storytelling</p>
+  <nav>
+    <div class="logo">MY<span>PORTFOLIO.</span></div>
+    <div class="menu">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Hello, welcome to my world</div>
+      <h1>Think Creative.<br><span>Make Impact.</span></h1>
+      <p>
+        Xin chào! Mình là sinh viên chuyên ngành
+        Marketing tại Học viện Tài chính.
+        Mình yêu thích Content Marketing,
+        truyền thông số và những ý tưởng sáng tạo.
+      </p>
+      <div class="buttons">
+        <a href="#projects" class="btn primary">Explore My Work →</a>
+        <a href="#about" class="btn secondary">About Me</a>
+      </div>
+    </div>
+
+    <div class="art">
+      <div class="circle"></div>
+      <div class="art-text">
+        CREATE.<br>
+        CONNECT.<br>
+        INSPIRE.
+      </div>
+      <div class="star">✳</div>
+    </div>
   </header>
 
   <main>
-    <section>
-      <h2>About Me</h2>
-      <p>Xin chào! Mình là sinh viên ngành Quản trị
-      Kinh doanh, chuyên ngành Marketing tại
-      Học viện Tài chính.</p>
-      <p>Mình quan tâm đến Content Marketing,
-      Social Media và truyền thông số.
-      Mình đang phát triển kỹ năng và xây dựng
-      các dự án Marketing cá nhân.</p>
+    <section id="about">
+      <div class="eyebrow">01 / About Me</div>
+      <h2 class="section-title">A little about me.</h2>
+      <div class="about">
+        <h3>Hi! I'm a Marketing student.</h3>
+        <p>
+          Mình hiện đang theo học ngành Quản trị
+          Kinh doanh, chuyên ngành Marketing
+          tại Học viện Tài chính.
+        </p>
+        <p>
+          Mình quan tâm đến việc nghiên cứu hành vi
+          khách hàng, sáng tạo nội dung và xây dựng
+          những câu chuyện thương hiệu có ý nghĩa.
+        </p>
+        <p>
+          Mục tiêu của mình là tiếp tục học hỏi,
+          tích lũy kinh nghiệm thực tế và phát triển
+          trong lĩnh vực Digital Marketing.
+        </p>
+      </div>
     </section>
 
-    <section>
-      <h2>My Skills</h2>
-      <p>Content Writing • Social Media •
-      Canva • Market Research • Teamwork</p>
+    <section id="skills">
+      <div class="eyebrow">02 / My Interests & Skills</div>
+      <h2 class="section-title">What I'm exploring.</h2>
+
+      <div class="grid">
+        <div class="card">
+          <div class="number">01.</div>
+          <h3>Content Marketing</h3>
+          <p>
+            Viết nội dung, xây dựng thông điệp
+            và phát triển ý tưởng truyền thông.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="number">02.</div>
+          <h3>Social Media</h3>
+          <p>
+            Tìm hiểu xu hướng, sáng tạo nội dung
+            cho TikTok, Facebook và các nền tảng số.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="number">03.</div>
+          <h3>Creative Thinking</h3>
+          <p>
+            Tìm kiếm góc nhìn mới, phát triển
+            ý tưởng và tư duy hướng đến người xem.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>My Projects</h2>
-      <h3>Project 01: Content Marketing</h3>
-      <p>Dự án đang được xây dựng.</p>
-      <h3>Project 02: Social Media Campaign</h3>
-      <p>Dự án đang được xây dựng.</p>
+    <section id="projects">
+      <div class="eyebrow">03 / Selected Work</div>
+      <h2 class="section-title">Projects in progress.</h2>
+
+      <div class="grid">
+        <div class="card">
+          <div class="tag">Personal Project</div>
+          <h3>Content Writing</h3>
+          <p>
+            Bộ sưu tập bài viết và ý tưởng nội dung.
+            Nội dung sẽ được cập nhật.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="tag">Practice Project</div>
+          <h3>Social Media Campaign</h3>
+          <p>
+            Dự án thực hành xây dựng chiến dịch
+            truyền thông trên mạng xã hội.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="tag">Learning Journey</div>
+          <h3>Marketing Research</h3>
+          <p>
+            Góc lưu trữ bài tập và nghiên cứu
+            về khách hàng, thị trường, thương hiệu.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>Contact</h2>
-      <p>Thông tin liên hệ sẽ được cập nhật.</p>
+    <section id="contact" class="contact">
+      <div class="eyebrow" style="color:#f18b69">
+        04 / Let's Connect
+      </div>
+      <h2>Let's create something meaningful.</h2>
+      <p>
+        Sẵn sàng học hỏi, kết nối và khám phá
+        những cơ hội mới trong Marketing.
+      </p>
+      <a class="btn"
+         href="https://github.com/nttuyen2507tu"
+         target="_blank"
+         rel="noopener noreferrer">
+         Visit My GitHub →
+      </a>
     </section>
   </main>
 
   <footer>
-    © 2026 My Marketing Portfolio
+    © 2026 My Marketing Portfolio.
+    Designed with creativity.
   </footer>
 </body>
 </html>
